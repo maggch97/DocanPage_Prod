@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN" class="no-js"><head>
+<!DOCTYPE html><html lang="zh-CN"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProPrint X9000 - Professional UV Flatbed Printer | TechPrint</title>
@@ -28,7 +28,6 @@
             }
         }
     </script>
-    <script>document.documentElement.classList.remove('no-js'); document.documentElement.classList.add('js');</script>
     <style>
         body {
             font-family: 'Noto Sans SC', sans-serif;
@@ -47,7 +46,7 @@
             overflow: hidden;
         }
 
-        .js .fade-in {
+        .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -1741,45 +1740,45 @@
         threshold: 0.1
     });
 
-    // document.addEventListener('DOMContentLoaded', function () {
-    const fadeElements = document.querySelectorAll('.fade-in');
-    fadeElements.forEach(element => {
-        observer.observe(element);
-    });
+    document.addEventListener('DOMContentLoaded', function () {
+        const fadeElements = document.querySelectorAll('.fade-in');
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
 
-    // Initialize GSAP ScrollTrigger
-    gsap.registerPlugin(ScrollTrigger);
+        // Initialize GSAP ScrollTrigger
+        gsap.registerPlugin(ScrollTrigger);
 
-    // Scroll Feature Animations
-    const scrollFeatures = document.querySelectorAll('.scroll-feature');
+        // Scroll Feature Animations
+        const scrollFeatures = document.querySelectorAll('.scroll-feature');
 
-    scrollFeatures.forEach((feature) => {
-        ScrollTrigger.create({
-            trigger: feature,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleClass: { targets: feature, className: "visible" },
-            once: true
+        scrollFeatures.forEach((feature) => {
+            ScrollTrigger.create({
+                trigger: feature,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleClass: { targets: feature, className: "visible" },
+                once: true
+            });
+        });
+
+        // Parallax effect for background image
+        window.addEventListener('scroll', function () {
+            const parallaxBg = document.getElementById('parallax-bg');
+            if (parallaxBg) {
+                const scrollPosition = window.pageYOffset;
+                const parallaxSection = document.querySelector('.parallax-section');
+                const sectionTop = parallaxSection.offsetTop;
+                const sectionHeight = parallaxSection.offsetHeight;
+
+                if (scrollPosition > sectionTop - window.innerHeight &&
+                    scrollPosition < sectionTop + sectionHeight) {
+                    const yPos = (scrollPosition - sectionTop) * 0.3;
+                    parallaxBg.style.transform = `translateY(${yPos}px)`;
+                }
+            }
         });
     });
-
-    // Parallax effect for background image
-    window.addEventListener('scroll', function () {
-        const parallaxBg = document.getElementById('parallax-bg');
-        if (parallaxBg) {
-            const scrollPosition = window.pageYOffset;
-            const parallaxSection = document.querySelector('.parallax-section');
-            const sectionTop = parallaxSection.offsetTop;
-            const sectionHeight = parallaxSection.offsetHeight;
-
-            if (scrollPosition > sectionTop - window.innerHeight &&
-                scrollPosition < sectionTop + sectionHeight) {
-                const yPos = (scrollPosition - sectionTop) * 0.3;
-                parallaxBg.style.transform = `translateY(${yPos}px)`;
-            }
-        }
-    });
-    //});
 </script>
 
 
