@@ -1,36 +1,31 @@
-<!DOCTYPE html><html lang="zh-CN"><head>
+<!DOCTYPE html><html lang="zh-CN" class="no-js"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ProPrint X9000 - Professional UV Flatbed Printer | TechPrint</title>
-    <script src="https://staging.docanuv.com/statics/js/tailwindcss@3.4.16.js"></script>
+    <title>UV Innovation,Printed Perfection  | DOCAN </title>
+    <link href="/statics/css/tailwind.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&amp;display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/gsap@3.12.2/dist/gsap.min.js"></script>
-    <script src="https://unpkg.com/gsap@3.12.2/dist/ScrollTrigger.min.js"></script>
+    
+
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'tech-black': '#0a0a0a',
-                        'tech-dark': '#1a1a1a',
-                        'tech-gray': '#2a2a2a',
-                        'tech-light': '#f5f5f7',
-                        'tech-accent': '#0071e3',
-                        'tech-accent-dark': '#0062c3'
-                    },
-                    fontFamily: {
-                        'sans': ['"Noto Sans SC"', 'sans-serif']
-                    }
-                }
-            }
-        }
+        
+        (function () {
+            var font = document.createElement('link');
+            font.rel = 'stylesheet';
+            font.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100;300;400;500;700;900&display=swap';
+            font.type = 'text/css';
+            var firstScript = document.getElementsByTagName('script')[0];
+            firstScript.parentNode.insertBefore(font, firstScript);
+        })();
     </script>
+
+    
+    <script>document.documentElement.classList.remove('no-js'); document.documentElement.classList.add('js');</script>
     <style>
         body {
-            font-family: 'Noto Sans SC', sans-serif;
+            font-family: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-display: swap;
             background-color: #0a0a0a;
             color: #f5f5f7;
             overflow-x: hidden;
@@ -46,7 +41,7 @@
             overflow: hidden;
         }
 
-        .fade-in {
+        .js .fade-in {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
@@ -72,25 +67,6 @@
         .feature-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-link {
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: -4px;
-            left: 0;
-            background-color: #f5f5f7;
-            transition: width 0.3s ease;
-        }
-
-        .nav-link:hover::after {
-            width: 100%;
         }
 
         .scroll-indicator {
@@ -122,25 +98,6 @@
 
         .specs-table tr:last-child {
             border-bottom: none;
-        }
-
-        /* Scroll Animation Styles */
-        .scroll-feature {
-            opacity: 0;
-            transition: all 0.8s ease;
-        }
-
-        .scroll-feature.from-left {
-            transform: translateX(-100px);
-        }
-
-        .scroll-feature.from-right {
-            transform: translateX(100px);
-        }
-
-        .scroll-feature.visible {
-            opacity: 1;
-            transform: translateX(0);
         }
 
         .hero-badge {
@@ -251,6 +208,15 @@
 
         .clean-shadow {
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+                .fade-in-opacity {
+            opacity: 0;
+            transition: opacity 0.8s ease;
+        }
+
+        .fade-in-opacity.visible {
+            opacity: 1;
         }
     </style>
 </head>
@@ -373,8 +339,7 @@
         }
     }
 
-    /* Mobile Menu Styles */
-    .mobile-menu {
+        .mobile-menu {
         position: fixed;
         top: 0;
         left: 0;
@@ -418,10 +383,13 @@
 
     .mobile-submenu {
         padding-left: 1rem;
-        margin-top: 1rem;
         max-height: 0;
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
+        transition: max-height 0.3s ease-out, margin-top 0.3s ease;
+    }
+    
+        .mobile-submenu.show {
+        margin-top: 1rem;
     }
 
     .mobile-submenu-item {
@@ -437,17 +405,72 @@
         color: rgba(245, 245, 247, 1);
     }
 
-    /* 语言切换按钮样式 */
-    .language-btn-active {
+        .language-btn-active {
         background-color: rgba(255, 255, 255, 0.1);
     }
 
-    /* 箭头旋转效果 */
-    .menu-arrow.active {
+        .menu-arrow.active {
         transform: rotate(180deg);
     }
+
+        .language-suggestion-bar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        backdrop-filter: blur(10px);
+        color: #f5f5f7;
+        padding: 8px 0;
+        z-index: 100;
+        transform: translateY(-100%);
+        transition: transform 0.3s ease;
+        text-align: center;
+    }
+
+    .language-suggestion-bar.visible {
+        transform: translateY(0);
+    }
+
+    .language-suggestion-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 16px;
+    }
+
+    .language-suggestion-btn {
+        background-color: #0071e3;
+        color: white;
+        padding: 4px 12px;
+        border-radius: 4px;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+    }
+
+    .language-suggestion-btn:hover {
+        background-color: #0077ed;
+    }
+
+    .language-suggestion-close {
+        cursor: pointer;
+        opacity: 0.7;
+        transition: opacity 0.2s ease;
+    }
+
+    .language-suggestion-close:hover {
+        opacity: 1;
+    }
+
+        header.has-language-bar {
+        top: 40px;
+    }
 </style>
-<!-- Header/Navigation -->
+
 <header class="fixed top-0 left-0 right-0 z-50 bg-tech-black bg-opacity-80 backdrop-blur-md">
     <div class="container mx-auto px-4 py-4">
         <div class="flex justify-between items-center">
@@ -457,227 +480,177 @@
                 </a>
             </div>
 
-            <!-- Desktop Navigation -->
+            
             <nav class="hidden md:flex space-x-8">
                 <a href="/index.html" class="nav-link text-tech-light hover:text-white transition-colors">Home</a>
 
-                <!-- 打印机 Dropdown -->
+                
                 <div class="nav-item relative group">
                     <a href="/printers/printers.html" class="nav-link text-tech-light hover:text-white transition-colors flex items-center">
                         Printers
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </a>
                     <div class="mega-menu">
-                        <div class="mega-menu-container" id="printer-mega-menu"><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Flatbed Printers</h3><div class="grid grid-cols-2 gap-x-6"><div><h4 class="text-sm font-medium text-tech-accent mt-4">Horizo</h4><a href="#" class="mega-menu-item" data-preview="horizo-x9000">Horizo X9000</a><a href="#" class="mega-menu-item" data-preview="horizo-x7000">Horizo X7000</a><a href="#" class="mega-menu-item" data-preview="horizo-x5000">Horizo X5000</a><a href="#" class="mega-menu-item" data-preview="horizo-x3000">Horizo X3000</a></div><div><h4 class="text-sm font-medium text-tech-accent mt-4">Orbit</h4><a href="#" class="mega-menu-item" data-preview="orbit-pro">Orbit Pro</a><a href="#" class="mega-menu-item" data-preview="orbit-plus">Orbit Plus</a><a href="#" class="mega-menu-item" data-preview="orbit-standard">Orbit Standard</a><a href="#" class="mega-menu-item" data-preview="orbit-lite">Orbit Lite</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Hybrid Printers</h3><div class="grid grid-cols-2 gap-x-6"><div><h4 class="text-sm font-medium text-tech-accent mt-4">Fusion</h4><a href="#" class="mega-menu-item" data-preview="fusion-pro">Fusion Pro</a><a href="#" class="mega-menu-item" data-preview="fusion-plus">Fusion Plus</a><a href="#" class="mega-menu-item" data-preview="fusion-standard">Fusion Standard</a><a href="#" class="mega-menu-item" data-preview="fusion-lite">Fusion Lite</a></div><div><h4 class="text-sm font-medium text-tech-accent mt-4">Nexus</h4><a href="#" class="mega-menu-item" data-preview="nexus-x8">Nexus X8</a><a href="#" class="mega-menu-item" data-preview="nexus-x6">Nexus X6</a><a href="#" class="mega-menu-item" data-preview="nexus-x4">Nexus X4</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Roll-to-Roll Printers</h3><div class="grid grid-cols-2 gap-x-6"><div><h4 class="text-sm font-medium text-tech-accent mt-4">Velocity</h4><a href="#" class="mega-menu-item" data-preview="velocity-r9000">Velocity R9000</a><a href="#" class="mega-menu-item" data-preview="velocity-r7000">Velocity R7000</a><a href="#" class="mega-menu-item" data-preview="velocity-r5000">Velocity R5000</a><a href="#" class="mega-menu-item" data-preview="velocity-r3000">Velocity R3000</a></div><div><h4 class="text-sm font-medium text-tech-accent mt-4">Spectrum</h4><a href="#" class="mega-menu-item" data-preview="spectrum-ultra">Spectrum Ultra</a><a href="#" class="mega-menu-item" data-preview="spectrum-pro">Spectrum Pro</a><a href="#" class="mega-menu-item" data-preview="spectrum-plus">Spectrum Plus</a><a href="#" class="mega-menu-item" data-preview="spectrum-standard">Spectrum Standard</a></div></div></div><div class="mega-menu-image">
-            <div class="product-preview active" id="horizo-x9000">
-                <img src="https://picsum.photos/600/400?random=20" alt="Horizo X9000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                        <div class="mega-menu-container" id="printer-mega-menu"><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">平板打印机</h3><div class="grid grid-cols-1 gap-x-6"><div><a href="{defaultItemLink}" class="mega-menu-item" data-preview="W1216">W1216<img src="/img/20250407024141676_1np6sa.png" alt="W1216" class="w-8 h-8 inline-block ml-1"></a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="W2525">W2525<img src="/img/20250407024141676_1np6sa.png" alt="W2525" class="w-8 h-8 inline-block ml-1"></a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="horizo-x5000">Horizo X5000</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="horizo-x3000">Horizo X3000</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">混合型打印机</h3><div class="grid grid-cols-1 gap-x-6"><div><a href="{defaultItemLink}" class="mega-menu-item" data-preview="C3200">C3200<img src="/img/20250407024141676_1np6sa.png" alt="C3200" class="w-8 h-8 inline-block ml-1"></a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="fusion-plus">Fusion Plus</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="fusion-standard">Fusion Standard</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="fusion-lite">Fusion Lite</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">卷材打印机</h3><div class="grid grid-cols-1 gap-x-6"><div><a href="{defaultItemLink}" class="mega-menu-item" data-preview="velocity-r9000">Velocity R9000</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="velocity-r7000">Velocity R7000</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="velocity-r5000">Velocity R5000</a><a href="{defaultItemLink}" class="mega-menu-item" data-preview="velocity-r3000">Velocity R3000</a></div></div></div><div class="mega-menu-image">
+            <div class="product-preview active" id="W1216">
+                <img src="https://picsum.photos/600/400?random=20" alt="Horizo X9000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Horizo X9000</h3>
-                <p class="text-tech-light/70 text-center">Flagship industrial printer for high-end advertising, art reproduction, and more</p>
+                <p class="text-tech-light/70 text-center">旗舰级工业打印机，适用于高端广告、艺术品复制等领域</p>
             </div>
-            <div class="product-preview " id="horizo-x7000">
-                <img src="https://picsum.photos/600/400?random=21" alt="Horizo X7000" class="w-full h-auto rounded-lg mb-4 object-cover">
+            <div class="product-preview " id="W2525">
+                <img src="https://picsum.photos/600/400?random=21" alt="Horizo X7000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Horizo X7000</h3>
-                <p class="text-tech-light/70 text-center">Mid-to-high-end industrial printer, balancing performance and cost, ideal for SMEs</p>
+                <p class="text-tech-light/70 text-center">中高端工业打印机，兼顾性能与成本，适合中小型企业</p>
             </div>
             <div class="product-preview " id="horizo-x5000">
-                <img src="https://picsum.photos/600/400?random=22" alt="Horizo X5000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=22" alt="Horizo X5000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Horizo X5000</h3>
-                <p class="text-tech-light/70 text-center">Economical industrial printer with high cost-performance, perfect for startups and small studios</p>
+                <p class="text-tech-light/70 text-center">经济型工业打印机，性价比高，适合初创企业和小型工作室</p>
             </div>
             <div class="product-preview " id="horizo-x3000">
-                <img src="https://picsum.photos/600/400?random=23" alt="Horizo X3000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=23" alt="Horizo X3000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Horizo X3000</h3>
-                <p class="text-tech-light/70 text-center">Entry-level desktop printer, compact and ideal for personal studios and small custom projects</p>
+                <p class="text-tech-light/70 text-center">入门级桌面打印机，体积小巧，适合个人工作室和小型定制</p>
             </div>
-            <div class="product-preview " id="orbit-pro">
-                <img src="https://picsum.photos/600/400?random=24" alt="Orbit Pro" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Orbit Pro</h3>
-                <p class="text-tech-light/70 text-center">Large-format industrial printer for billboards, display boards, and other large-scale printing</p>
-            </div>
-            <div class="product-preview " id="orbit-plus">
-                <img src="https://picsum.photos/600/400?random=25" alt="Orbit Plus" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Orbit Plus</h3>
-                <p class="text-tech-light/70 text-center">Mid-to-large industrial printer for advertising agencies and large production facilities</p>
-            </div>
-            <div class="product-preview " id="orbit-standard">
-                <img src="https://picsum.photos/600/400?random=26" alt="Orbit Standard" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Orbit Standard</h3>
-                <p class="text-tech-light/70 text-center">Standard industrial printer for small-to-medium advertising agencies and production facilities</p>
-            </div>
-            <div class="product-preview " id="orbit-lite">
-                <img src="https://picsum.photos/600/400?random=27" alt="Orbit Lite" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Orbit Lite</h3>
-                <p class="text-tech-light/70 text-center">Economical industrial printer for small advertising agencies and startups</p>
-            </div>
-            <div class="product-preview " id="fusion-pro">
-                <img src="https://picsum.photos/600/400?random=28" alt="Fusion Pro" class="w-full h-auto rounded-lg mb-4 object-cover">
+            <div class="product-preview " id="C3200">
+                <img src="https://picsum.photos/600/400?random=28" alt="Fusion Pro" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Fusion Pro</h3>
-                <p class="text-tech-light/70 text-center">Flagship hybrid printer for high-end advertising agencies and large production facilities</p>
+                <p class="text-tech-light/70 text-center">旗舰级混合型打印机，适用于高端广告公司和大型制作工厂</p>
             </div>
             <div class="product-preview " id="fusion-plus">
-                <img src="https://picsum.photos/600/400?random=29" alt="Fusion Plus" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=29" alt="Fusion Plus" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Fusion Plus</h3>
-                <p class="text-tech-light/70 text-center">High-end hybrid printer for mid-to-large advertising agencies and production facilities</p>
+                <p class="text-tech-light/70 text-center">高端混合型打印机，适用于中大型广告公司和制作工厂</p>
             </div>
             <div class="product-preview " id="fusion-standard">
-                <img src="https://picsum.photos/600/400?random=30" alt="Fusion Standard" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=30" alt="Fusion Standard" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Fusion Standard</h3>
-                <p class="text-tech-light/70 text-center">Standard hybrid printer for small-to-medium advertising agencies and production facilities</p>
+                <p class="text-tech-light/70 text-center">标准型混合打印机，适合中小型广告公司和制作工厂</p>
             </div>
             <div class="product-preview " id="fusion-lite">
-                <img src="https://picsum.photos/600/400?random=31" alt="Fusion Lite" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=31" alt="Fusion Lite" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Fusion Lite</h3>
-                <p class="text-tech-light/70 text-center">Entry-level hybrid printer for small advertising agencies and startups</p>
-            </div>
-            <div class="product-preview " id="nexus-x8">
-                <img src="https://picsum.photos/600/400?random=32" alt="Nexus X8" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Nexus X8</h3>
-                <p class="text-tech-light/70 text-center">Large-format hybrid printer, ideal for billboards and display boards</p>
-            </div>
-            <div class="product-preview " id="nexus-x6">
-                <img src="https://picsum.photos/600/400?random=33" alt="Nexus X6" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Nexus X6</h3>
-                <p class="text-tech-light/70 text-center">Mid-to-large hybrid printer, perfect for advertising agencies and large production facilities</p>
-            </div>
-            <div class="product-preview " id="nexus-x4">
-                <img src="https://picsum.photos/600/400?random=34" alt="Nexus X4" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Nexus X4</h3>
-                <p class="text-tech-light/70 text-center">Standard hybrid printer, suitable for small to medium-sized advertising agencies and production facilities</p>
+                <p class="text-tech-light/70 text-center">入门级混合打印机，适合小型广告公司和初创企业</p>
             </div>
             <div class="product-preview " id="velocity-r9000">
-                <img src="https://picsum.photos/600/400?random=35" alt="Velocity R9000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=35" alt="Velocity R9000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Velocity R9000</h3>
-                <p class="text-tech-light/70 text-center">Flagship ultra-wide roll-to-roll printer, ideal for large-scale banners, wallpapers, and more</p>
+                <p class="text-tech-light/70 text-center">旗舰级超宽幅卷材打印机，适用于大型广告布、墙纸等制作</p>
             </div>
             <div class="product-preview " id="velocity-r7000">
-                <img src="https://picsum.photos/600/400?random=36" alt="Velocity R7000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=36" alt="Velocity R7000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Velocity R7000</h3>
-                <p class="text-tech-light/70 text-center">High-end wide-format roll-to-roll printer, perfect for banners, wallpapers, and more</p>
+                <p class="text-tech-light/70 text-center">高端宽幅卷材打印机，适用于广告布、墙纸等制作</p>
             </div>
             <div class="product-preview " id="velocity-r5000">
-                <img src="https://picsum.photos/600/400?random=37" alt="Velocity R5000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=37" alt="Velocity R5000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Velocity R5000</h3>
-                <p class="text-tech-light/70 text-center">Standard roll-to-roll printer, suitable for small to medium-sized advertising agencies and production facilities</p>
+                <p class="text-tech-light/70 text-center">标准型卷材打印机，适合中小型广告公司和制作工厂</p>
             </div>
             <div class="product-preview " id="velocity-r3000">
-                <img src="https://picsum.photos/600/400?random=38" alt="Velocity R3000" class="w-full h-auto rounded-lg mb-4 object-cover">
+                <img src="https://picsum.photos/600/400?random=38" alt="Velocity R3000" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
                 <h3 class="text-xl font-bold text-center">Velocity R3000</h3>
-                <p class="text-tech-light/70 text-center">Entry-level roll-to-roll printer, ideal for small advertising agencies and startups</p>
-            </div>
-            <div class="product-preview " id="spectrum-ultra">
-                <img src="https://picsum.photos/600/400?random=39" alt="Spectrum Ultra" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Spectrum Ultra</h3>
-                <p class="text-tech-light/70 text-center">Ultra-wide high-precision roll-to-roll printer, perfect for premium banners, wallpapers, and more</p>
-            </div>
-            <div class="product-preview " id="spectrum-pro">
-                <img src="https://picsum.photos/600/400?random=40" alt="Spectrum Pro" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Spectrum Pro</h3>
-                <p class="text-tech-light/70 text-center">Professional wide-format roll-to-roll printer, ideal for banners, wallpapers, and more</p>
-            </div>
-            <div class="product-preview " id="spectrum-plus">
-                <img src="https://picsum.photos/600/400?random=41" alt="Spectrum Plus" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Spectrum Plus</h3>
-                <p class="text-tech-light/70 text-center">Mid-to-high-end roll-to-roll printer, suitable for medium to large advertising agencies and production facilities</p>
-            </div>
-            <div class="product-preview " id="spectrum-standard">
-                <img src="https://picsum.photos/600/400?random=42" alt="Spectrum Standard" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Spectrum Standard</h3>
-                <p class="text-tech-light/70 text-center">Standard roll-to-roll printer, ideal for small to medium-sized advertising agencies and production facilities</p>
+                <p class="text-tech-light/70 text-center">入门级卷材打印机，适合小型广告公司和初创企业</p>
             </div></div></div>
                     </div>
                 </div>
 
-                <!-- 墨水 Dropdown -->
+                
                 <div class="nav-item relative group">
                     <a href="/inks/inks.html" class="nav-link text-tech-light hover:text-white transition-colors flex items-center">
                         Inks
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </a>
                     <div class="mega-menu">
-                        <div class="mega-menu-container" id="ink-mega-menu"><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">UV Inks</h3><div class="grid grid-cols-2 gap-x-6"><div><h4 class="text-sm font-medium text-tech-accent mt-4">Standard Inks</h4><a href="#" class="mega-menu-item" data-preview="uv-standard">Standard UV Ink</a><a href="#" class="mega-menu-item" data-preview="uv-flexible">Flexible UV Ink</a><a href="#" class="mega-menu-item" data-preview="uv-white">White UV Ink</a><a href="#" class="mega-menu-item" data-preview="uv-varnish">UV Varnish</a></div><div><h4 class="text-sm font-medium text-tech-accent mt-4">Special Inks</h4><a href="#" class="mega-menu-item" data-preview="special-metallic">Metallic Effect Ink</a><a href="#" class="mega-menu-item" data-preview="special-fluorescent">Fluorescent Ink</a><a href="#" class="mega-menu-item" data-preview="special-security">Anti-Counterfeit Ink</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Ink Sets</h3><div class="space-y-1"><a href="#" class="mega-menu-item" data-preview="set-cmyk">CMYK Set</a><a href="#" class="mega-menu-item" data-preview="set-cmyk-w">CMYK+White Set</a><a href="#" class="mega-menu-item" data-preview="set-cmyk-wv">CMYK+White+Varnish Set</a><a href="#" class="mega-menu-item" data-preview="set-full">Full Color Set</a></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Cleaning Supplies</h3><div class="space-y-1"><a href="#" class="mega-menu-item" data-preview="cleaning-solution">Cleaning Solution</a><a href="#" class="mega-menu-item" data-preview="cleaning-kit">Cleaning Kit</a></div></div><div class="mega-menu-image">
-            <div class="product-preview active" id="uv-standard">
-                <img src="https://picsum.photos/600/400?random=50" alt="Standard UV Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Standard UV Ink</h3>
-                <p class="text-tech-light/70 text-center">Suitable for various rigid materials, vibrant colors, strong adhesion, and excellent weather resistance</p>
+                        <div class="mega-menu-container" id="ink-mega-menu"><div class="mega-menu-column "><h3 class="text-lg font-medium text-white">Hard Ink</h3><div class="grid grid-cols-1 gap-x-6"><div><a href="/inks/TK68.html" class="mega-menu-item" data-preview="tk68">TK68</a><a href="/inks/TK77.html" class="mega-menu-item" data-preview="tk77">TK77</a><a href="/inks/V84.html" class="mega-menu-item" data-preview="v84">V84</a><a href="/inks/EH56.html" class="mega-menu-item" data-preview="eh56">EH56</a></div></div></div><div class="mega-menu-column "><h3 class="text-lg font-medium text-white">Neutral Ink</h3><div class="space-y-1"><a href="/inks/V77.html" class="mega-menu-item" data-preview="v77">V77</a><a href="/inks/V81.html" class="mega-menu-item" data-preview="v81">V81</a><a href="/inks/V88.html" class="mega-menu-item" data-preview="v88">V88</a><a href="/inks/XJ2.html" class="mega-menu-item" data-preview="xj2">XJ2</a><a href="/inks/MD30.html" class="mega-menu-item" data-preview="md30">MD30</a><a href="/inks/EH53.html" class="mega-menu-item" data-preview="eh53">EH53</a></div></div><div class="mega-menu-column "><h3 class="text-lg font-medium text-white">Special Applications</h3><div class="space-y-1"><a href="/inks/L52.html" class="mega-menu-item" data-preview="l52">L52</a><a href="/inks/PGV21.html" class="mega-menu-item" data-preview="pvg21">PVG21</a><a href="/inks/JS06.html" class="mega-menu-item" data-preview="js06">JS06</a><a href="/inks/JLH01.html" class="mega-menu-item" data-preview="jlh01">JLH01</a></div></div><div class="mega-menu-image">
+            <div class="product-preview active" id="tk68">
+                <img src="/img/20250411065043402_98gxa7.jpg" alt="TK68" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">TK68</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="uv-flexible">
-                <img src="https://picsum.photos/600/400?random=51" alt="Flexible UV Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Flexible UV Ink</h3>
-                <p class="text-tech-light/70 text-center">Designed for flexible materials, excellent elasticity, no cracking, ideal for bending and stretching</p>
+            <div class="product-preview " id="tk77">
+                <img src="/img/20250411065043435_r799q0.jpg" alt="TK77" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">TK77</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="uv-white">
-                <img src="https://picsum.photos/600/400?random=52" alt="White UV Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">White UV Ink</h3>
-                <p class="text-tech-light/70 text-center">High-opacity white ink, perfect for transparent and dark materials, providing a vivid base</p>
+            <div class="product-preview " id="v84">
+                <img src="/img/20250411065043551_rvrvc8.jpg" alt="V84" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">V84</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="uv-varnish">
-                <img src="https://picsum.photos/600/400?random=53" alt="UV Varnish" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">UV Varnish</h3>
-                <p class="text-tech-light/70 text-center">Offers glossy or matte finishes, enhancing the texture and protection of printed products</p>
+            <div class="product-preview " id="eh56">
+                <img src="/img/20250411065043215_fuqkt8.jpg" alt="EH56" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">EH56</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="special-metallic">
-                <img src="https://picsum.photos/600/400?random=54" alt="Metallic Effect Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Metallic Effect Ink</h3>
-                <p class="text-tech-light/70 text-center">Provides gold, silver, and copper metallic finishes, ideal for premium packaging and decoration</p>
+            <div class="product-preview " id="v77">
+                <img src="/img/20250411065043465_rkrw0q.jpg" alt="V77" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">V77</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="special-fluorescent">
-                <img src="https://picsum.photos/600/400?random=55" alt="Fluorescent Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Fluorescent Ink</h3>
-                <p class="text-tech-light/70 text-center">Glows under UV light, perfect for safety markings and special decorations</p>
+            <div class="product-preview " id="v81">
+                <img src="/img/20250411065043519_h8ogrj.jpg" alt="V81" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">V81</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="special-security">
-                <img src="https://picsum.photos/600/400?random=56" alt="Anti-Counterfeit Ink" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Anti-Counterfeit Ink</h3>
-                <p class="text-tech-light/70 text-center">Contains special markers for product anti-counterfeiting and tracking</p>
+            <div class="product-preview " id="v88">
+                <img src="/img/20250411065043605_ohqnvo.jpg" alt="V88" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">V88</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="set-cmyk">
-                <img src="https://picsum.photos/600/400?random=57" alt="CMYK Set" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">CMYK Set</h3>
-                <p class="text-tech-light/70 text-center">Basic four-color ink set for most standard printing needs</p>
+            <div class="product-preview " id="xj2">
+                <img src="/img/20250410052154301_0m7e9y.jpg" alt="XJ2" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">XJ2</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="set-cmyk-w">
-                <img src="https://picsum.photos/600/400?random=58" alt="CMYK+White Set" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">CMYK+White Set</h3>
-                <p class="text-tech-light/70 text-center">Five-color set including white ink, suitable for transparent and dark materials</p>
+            <div class="product-preview " id="md30">
+                <img src="/img/20250411065043313_tjob09.jpg" alt="MD30" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">MD30</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="set-cmyk-wv">
-                <img src="https://picsum.photos/600/400?random=59" alt="CMYK+White+Varnish Set" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">CMYK+White+Varnish Set</h3>
-                <p class="text-tech-light/70 text-center">Premium six-color set for rich visual and tactile effects</p>
+            <div class="product-preview " id="eh53">
+                <img src="/img/20250411065043177_jct25g.jpg" alt="EH53" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">EH53</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="set-full">
-                <img src="https://picsum.photos/600/400?random=60" alt="Full Color Set" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Full Color Set</h3>
-                <p class="text-tech-light/70 text-center">Professional set with all colors for high-end printing needs</p>
+            <div class="product-preview " id="l52">
+                <img src="/img/20250411065043282_si4wuw.jpg" alt="L52" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">L52</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="cleaning-solution">
-                <img src="https://picsum.photos/600/400?random=61" alt="Cleaning Solution" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Cleaning Solution</h3>
-                <p class="text-tech-light/70 text-center">Professional nozzle cleaning solution to remove ink residue and extend nozzle life</p>
+            <div class="product-preview " id="pvg21">
+                <img src="/img/20250411065043365_2gktoo.jpg" alt="PVG21" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">PVG21</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div>
-            <div class="product-preview " id="cleaning-kit">
-                <img src="https://picsum.photos/600/400?random=62" alt="Cleaning Kit" class="w-full h-auto rounded-lg mb-4 object-cover">
-                <h3 class="text-xl font-bold text-center">Cleaning Kit</h3>
-                <p class="text-tech-light/70 text-center">Comprehensive printer maintenance kit with all necessary cleaning tools</p>
+            <div class="product-preview " id="js06">
+                <img src="/img/20250411065043252_3tu2gc.jpg" alt="JS06" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">JS06</h3>
+                <p class="text-tech-light/70 text-center"></p>
+            </div>
+            <div class="product-preview " id="jlh01">
+                <img src="/img/20250411072244603_y8rf4d.jpg" alt="JLH01" class="w-full h-auto rounded-lg mb-4 object-cover" loading="lazy">
+                <h3 class="text-xl font-bold text-center">JLH01</h3>
+                <p class="text-tech-light/70 text-center"></p>
             </div></div></div>
                     </div>
                 </div>
 
-                <!-- 服务支持 Dropdown -->
+                
                 <div class="nav-item relative group">
                     <a href="#" class="nav-link text-tech-light hover:text-white transition-colors flex items-center">
                         Support
                         <i class="fas fa-chevron-down ml-1 text-xs"></i>
                     </a>
                     <div class="mega-menu">
-                        <div class="mega-menu-container" id="support-mega-menu"><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Support</h3><div class="grid grid-cols-2 gap-x-6"><div><a href="#contact" class="mega-menu-item">Contact Us</a><a href="#support" class="mega-menu-item">Technical Support</a><a href="#aftersale" class="mega-menu-item">After-Sales Service</a></div><div><a href="#faq" class="mega-menu-item">FAQ</a><a href="#download" class="mega-menu-item">Download Center</a><a href="#repair" class="mega-menu-item">Repair Service</a></div></div></div><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Training &amp; Resources</h3><div class="grid grid-cols-2 gap-x-6"><div><a href="#training" class="mega-menu-item">Operation Training</a><a href="#maintenance" class="mega-menu-item">Maintenance</a><a href="#videos" class="mega-menu-item">Video Tutorials</a></div><div><a href="#manuals" class="mega-menu-item">User Manual</a><a href="#docs" class="mega-menu-item">Technical Documentation</a><a href="#updates" class="mega-menu-item">Software Updates</a></div></div></div><div class="mega-menu-column wide" style="grid-column: span 4"><h3 class="text-lg font-medium text-white">Contact</h3><div class="mt-4 grid grid-cols-2 gap-6">
+                        <div class="mega-menu-container" id="support-mega-menu"><div class="mega-menu-column wide"><h3 class="text-lg font-medium text-white">Support</h3><div class="grid grid-cols-2 gap-x-6"><div><a href="/support/contact.html" class="mega-menu-item">Contact Us</a></div><div><a href="/support/about.html" class="mega-menu-item">About DOCAN</a></div></div></div><div class="mega-menu-column wide" style="grid-column: span 4"><h3 class="text-lg font-medium text-white">Contact Information</h3><div class="mt-4 grid grid-cols-2 gap-6">
                     <div class="flex items-start">
                         <div class="text-tech-accent text-xl mt-1 mr-4">
                             <i class="fas fa-phone-alt"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium mb-1">Customer Service Hotline</h4>
-                            <p class="text-tech-light/70">400-888-9999 (Mon-Sun 9:00-18:00)</p>
+                            <h4 class="font-medium mb-1">Phone</h4>
+                            <p class="text-tech-light/70">+86-18930026930</p>
                         </div>
                     </div>
                     <div class="flex items-start">
@@ -685,26 +658,8 @@
                             <i class="fas fa-envelope"></i>
                         </div>
                         <div>
-                            <h4 class="font-medium mb-1">Technical Support Email</h4>
-                            <p class="text-tech-light/70">support@techprint.com</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="text-tech-accent text-xl mt-1 mr-4">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-1">National Service Centers</h4>
-                            <p class="text-tech-light/70">Beijing, Shanghai, Guangzhou, Shenzhen, Chengdu, Wuhan, Xi'an</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="text-tech-accent text-xl mt-1 mr-4">
-                            <i class="fas fa-headset"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-medium mb-1">Online Support</h4>
-                            <p class="text-tech-light/70">Weekdays 8:30 AM - 8:30 PM, Holidays 9:00 AM - 6:00 PM</p>
+                            <h4 class="font-medium mb-1">Email</h4>
+                            <p class="text-tech-light/70">sales@uvflatbedprinter.com.cn</p>
                         </div>
                     </div></div></div></div>
                     </div>
@@ -712,7 +667,7 @@
             </nav>
 
             <div class="flex items-center space-x-4">
-                <!-- 语言切换按钮 -->
+                
                 <div class="relative group">
                     <button id="desktop-language-button" class="hidden md:flex items-center space-x-1 px-3 py-1.5 rounded-full border border-tech-light/30 text-tech-light hover:bg-tech-light/10 transition-all">
                         <span class="text-sm font-medium">EN / 中文</span>
@@ -731,7 +686,7 @@
             
                 <a href="/es-es/" class="block px-4 py-2 text-tech-light hover:bg-tech-light/10 transition-colors text-sm border-b border-tech-light/10 flex items-center desktop-language-menu-item">
                     <span class="w-5 inline-block">ES</span>
-                    <span class="ml-2">Spanish</span>
+                    <span class="ml-2">Español</span>
                 </a>
             
                 <a href="/fr-fr/" class="block px-4 py-2 text-tech-light hover:bg-tech-light/10 transition-colors text-sm border-b border-tech-light/10 flex items-center desktop-language-menu-item">
@@ -749,13 +704,18 @@
                     <span class="ml-2">한국어</span>
                 </a>
             
+                <a href="/ru-ru/" class="block px-4 py-2 text-tech-light hover:bg-tech-light/10 transition-colors text-sm border-b border-tech-light/10 flex items-center desktop-language-menu-item">
+                    <span class="w-5 inline-block">RU</span>
+                    <span class="ml-2">Русский</span>
+                </a>
+            
                 <a href="/zh-cn/" class="block px-4 py-2 text-tech-light hover:bg-tech-light/10 transition-colors text-sm flex items-center desktop-language-menu-item">
                     <span class="w-5 inline-block">简</span>
                     <span class="ml-2">简体中文</span>
                 </a>
             </div>
                 </div>
-                <a href="#contact" class="hidden md:inline-block px-4 py-2 btn-primary rounded-full">
+                <a href="/support/contact.html" class="hidden md:inline-block px-4 py-2 btn-primary rounded-full">
                     Request a Quote
                 </a>
                 <button class="md:hidden text-tech-light text-xl" id="mobile-menu-button">
@@ -766,7 +726,7 @@
     </div>
 </header>
 
-<!-- Mobile Menu (Hidden by default) -->
+
 <div class="mobile-menu md:hidden" id="mobile-menu-panel">
     <div class="mobile-menu-header">
         <a href="/index.html" class="flex items-center">
@@ -797,49 +757,19 @@
             </span>
             <div class="mobile-submenu" id="mobile-support-submenu">
             <div class="mobile-submenu-item">
-                <a href="#contact" class="mobile-submenu-link">Contact Us</a>
+                <a href="/support/contact.html" class="mobile-submenu-link">Contact Us</a>
             </div>
             <div class="mobile-submenu-item">
-                <a href="#support" class="mobile-submenu-link">Technical Support</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#aftersale" class="mobile-submenu-link">After-Sales Service</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#faq" class="mobile-submenu-link">FAQ</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#download" class="mobile-submenu-link">Download Center</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#repair" class="mobile-submenu-link">Repair Service</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#training" class="mobile-submenu-link">Operation Training</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#maintenance" class="mobile-submenu-link">Maintenance</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#videos" class="mobile-submenu-link">Video Tutorials</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#manuals" class="mobile-submenu-link">User Manual</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#docs" class="mobile-submenu-link">Technical Documentation</a>
-            </div>
-            <div class="mobile-submenu-item">
-                <a href="#updates" class="mobile-submenu-link">Software Updates</a>
+                <a href="/support/about.html" class="mobile-submenu-link">About DOCAN</a>
             </div></div>
         </div>
 
         <div class="mobile-menu-item">
-            <a href="#contact" class="mobile-menu-link text-tech-accent">Request a Quote</a>
+            <a href="/support/contact.html" class="mobile-menu-link text-tech-accent">Request a Quote</a>
         </div>
 
 
-        <!-- 移动端语言切换 -->
+        
         <div class="mobile-menu-item">
             <span class="mobile-menu-link flex items-center justify-between cursor-pointer">
                 <span class="flex items-center">
@@ -866,7 +796,7 @@
                 <div class="mobile-submenu-item">
                     <a href="/es-es/" class="mobile-submenu-link flex items-center mobile-language-menu-item">
                         <span class="w-5 inline-block">ES</span>
-                        <span class="ml-2">Spanish</span>
+                        <span class="ml-2">Español</span>
                     </a>
                 </div>
             
@@ -892,6 +822,13 @@
                 </div>
             
                 <div class="mobile-submenu-item">
+                    <a href="/ru-ru/" class="mobile-submenu-link flex items-center mobile-language-menu-item">
+                        <span class="w-5 inline-block">RU</span>
+                        <span class="ml-2">Русский</span>
+                    </a>
+                </div>
+            
+                <div class="mobile-submenu-item">
                     <a href="/zh-cn/" class="mobile-submenu-link flex items-center mobile-language-menu-item">
                         <span class="w-5 inline-block">简</span>
                         <span class="ml-2">简体中文</span>
@@ -903,10 +840,27 @@
 </div>
 
 
+<div id="language-suggestion-bar" class="language-suggestion-bar">
+    <div class="language-suggestion-container">
+        <span id="language-suggestion-text"></span>
+        <button id="language-suggestion-btn" class="language-suggestion-btn"></button>
+        <span id="language-suggestion-close" class="language-suggestion-close">
+            <i class="fas fa-times"></i>
+        </span>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 <script>
 
 
-    // Mobile menu toggle
+    
     document.getElementById('mobile-menu-button').addEventListener('click', function () {
         const mobileMenu = document.getElementById('mobile-menu-panel');
         mobileMenu.classList.add('open');
@@ -927,7 +881,7 @@
             });
         }
 
-        // Mega menu product preview
+        
         const menuItems = document.querySelectorAll('.mega-menu-item[data-preview]');
 
         menuItems.forEach(item => {
@@ -935,12 +889,12 @@
                 const previewId = this.getAttribute('data-preview');
                 const previewElement = document.getElementById(previewId);
 
-                // Hide all previews
+                
                 document.querySelectorAll('.product-preview').forEach(preview => {
                     preview.classList.remove('active');
                 });
 
-                // Show the selected preview
+                
                 if (previewElement) {
                     previewElement.classList.add('active');
                 }
@@ -950,7 +904,7 @@
 
     });
 
-    // 移动端子菜单的展开/收起
+    
     const mobileMenuItems = document.querySelectorAll('.mobile-menu-item > span.mobile-menu-link');
     mobileMenuItems.forEach(item => {
         item.addEventListener('click', function () {
@@ -960,21 +914,119 @@
             if (subMenu && subMenu.classList.contains('mobile-submenu')) {
                 if (subMenu.style.maxHeight) {
                     subMenu.style.maxHeight = null;
-                    // 移除箭头激活状态
+                    
                     if (arrow) arrow.classList.remove('active');
+                    
+                    subMenu.classList.remove('show');
                 } else {
                     subMenu.style.maxHeight = subMenu.scrollHeight + 'px';
-                    // 添加箭头激活状态
+                    
                     if (arrow) arrow.classList.add('active');
+                    
+                    subMenu.classList.add('show');
                 }
             }
         });
     });
 </script>
 
-<style>
-    /* 文章内容样式 */
-    .article-content h2 {
+<script id="script-get-current-language">
+        const currentLanguage = 'en-us';
+        const languageMap = {"zh-cn":{"displayText":"中文 / EN","fullName":"简体中文","shortName":"简","href":"/zh-cn/","ask":"检测到您的浏览器语言为简体中文，是否切换？","switchButton":"切换到简体中文"},"en-us":{"displayText":"EN / 中文","fullName":"English","shortName":"EN","href":"/","ask":"We detected that your browser language is English. Would you like to switch?","switchButton":"Switch to English"},"ja-jp":{"displayText":"日本語 / EN","fullName":"日本語","shortName":"日","href":"/ja-jp/","ask":"ブラウザーの言語が日本語に設定されています。切り替えますか？","switchButton":"日本語に切り替える"},"ko-kr":{"displayText":"한국어 / EN","fullName":"한국어","shortName":"한","href":"/ko-kr/","ask":"브라우저 언어가 한국어로 설정되어 있습니다. 전환하시겠습니까?","switchButton":"한국어로 전환"},"de-de":{"displayText":"DE / EN","fullName":"Deutsch","shortName":"DE","href":"/de-de/","ask":"Ihre Browsersprache ist Deutsch. Möchten Sie wechseln?","switchButton":"Zu Deutsch wechseln"},"fr-fr":{"displayText":"FR / EN","fullName":"Français","shortName":"FR","href":"/fr-fr/","ask":"La langue de votre navigateur est le français. Voulez-vous passer en français ?","switchButton":"Passer en français"},"es-es":{"displayText":"ES / EN","fullName":"Español","shortName":"ES","href":"/es-es/","ask":"El idioma de tu navegador es español. ¿Quieres cambiarlo?","switchButton":"Cambiar a español"},"ru-ru":{"displayText":"RU / EN","fullName":"Русский","shortName":"RU","href":"/ru-ru/","ask":"Язык вашего браузера - русский. Хотите изменить его?","switchButton":"Изменить на русский"}};
+    </script>
+
+
+
+<script>
+
+    
+    document.addEventListener('DOMContentLoaded', function () {
+        
+        const getBrowserLanguage = () => {
+            const browserLang = navigator.language || navigator.userLanguage;
+            
+            return browserLang.toLowerCase().replace('_', '-');
+        };
+
+        const matchLanguage = (browserLang) => {
+            
+            if (languageMap[browserLang]) {
+                return browserLang;
+            }
+
+            
+            const mainLang = browserLang.split('-')[0];
+            for (const key of Object.keys(languageMap)) {
+                if (key.startsWith(mainLang + '-')) {
+                    return key;
+                }
+            }
+
+            
+            return currentLanguage;
+        };
+
+        const showLanguageSuggestion = () => {
+            const browserLang = getBrowserLanguage();
+            const matchedLang = matchLanguage(browserLang);
+
+            
+            if (matchedLang !== currentLanguage) {
+                const suggestedLang = languageMap[matchedLang];
+
+                if (!suggestedLang) return; 
+
+                
+                document.getElementById('language-suggestion-text').textContent = suggestedLang.ask;
+                document.getElementById('language-suggestion-btn').textContent = suggestedLang.switchButton;
+
+                
+                const suggestionBar = document.getElementById('language-suggestion-bar');
+                suggestionBar.classList.add('visible');
+
+                
+                document.querySelector('header').classList.add('has-language-bar');
+
+                
+                document.getElementById('language-suggestion-btn').onclick = function () {
+                    window.location.href = suggestedLang.href;
+                };
+
+                
+                document.getElementById('language-suggestion-close').onclick = function () {
+                    closeLanguageSuggestion();
+                    
+                    localStorage.setItem('language-suggestion-dismissed-time', new Date().getTime());
+                };
+            }
+        };
+
+        const closeLanguageSuggestion = () => {
+            const suggestionBar = document.getElementById('language-suggestion-bar');
+            suggestionBar.classList.remove('visible');
+            document.querySelector('header').classList.remove('has-language-bar');
+        };
+
+        
+        const hasBeenDismissed = localStorage.getItem('language-suggestion-dismissed-time') && new Date().getTime() - localStorage.getItem('language-suggestion-dismissed-time') < 1000 * 60 * 60 * 24;
+
+        
+        if (!hasBeenDismissed) {
+            showLanguageSuggestion();
+        }
+    });
+</script><style>
+    .article-content h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid rgba(245, 245, 247, 0.2);
+        color: #ffffff;
+    }
+
+        .article-content h2 {
         font-size: 1.875rem;
         font-weight: 700;
         margin-top: 2rem;
@@ -1001,7 +1053,7 @@
     .article-content ul,
     .article-content ol {
         margin-bottom: 1rem;
-        margin-left: 1.5rem;
+        padding-left: 1.5rem;
         color: rgba(245, 245, 247, 0.8);
     }
 
@@ -1064,111 +1116,53 @@
         max-width: 100%;
         height: auto;
         border-radius: 8px;
-        margin: 1.5rem 0;
+        margin-top: 1.5rem;
+        margin-bottom: 1.5rem;
         box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
     }
 </style>
-<!-- 文章内容区域 -->
+
 <main class="pt-24 pb-16 bg-tech-black">
-    <div class="container mx-auto px-4 max-w-4xl">
-        <!-- 题图和标题融合区域 -->
-        <div class="relative mb-8 md:mb-12">
-            <!-- Image Container: Fixed height, relative pos, fallback bg -->
+    <div class="container mx-auto px-4">
+        
+        <div class="relative mb-8 md:mb-12 max-w-4xl mx-auto">
+            
             <div class="w-full h-[400px] overflow-hidden rounded-lg shadow-lg relative bg-tech-dark">
                 <img id="article-title-img" src="/img/20250327170503286_4eumu0.jpg" class="absolute inset-0 w-full h-full object-cover">
                 <div class="absolute inset-0 bg-gradient-to-b from-transparent via-tech-black/50 to-tech-black/90">
                 </div>
             </div>
 
-            <!-- Title Overlay: Positioned relative to the main wrapper -->
+            
             <div class="absolute bottom-0 left-0 right-0 p-6 md:p-8">
-                <h1 id="article-title" class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white drop-shadow-lg">ProPrint X9000: Pioneering a New Era in Industrial Printing</h1>
+                <h1 id="article-title" class="text-3xl md:text-4xl lg:text-5xl font-bold mb-3 text-white drop-shadow-lg">
+                    ProPrint X9000: Pioneering a New Era in Industrial Printing
+                </h1>
 
                 <div class="text-sm text-tech-light/80 drop-shadow-md">
                     <span><span id="publish-date">October 26, 2023</span></span>
-                    <!-- <span>作者: <span id="author-name">TechPrint 编辑部</span></span> -->
+                    
                 </div>
             </div>
         </div>
 
-        <!-- 文章内容容器 -->
-        <div id="article-content" class="article-content"><h2>Introduction</h2>
-<p>A paragraph of text</p>
-<p>Another paragraph</p>
-<h3>Subheading</h3>
-<p>TechPrint proudly presents the <strong>ProPrint X9000</strong>, a revolutionary industrial-grade UV flatbed printer designed to redefine printing industry standards. Combining cutting-edge technology with exceptional performance, the X9000 delivers unparalleled printing solutions for various industries.</p>
-<p><img src="https://picsum.photos/800/400?random=31" alt="ProPrint X9000 Print Sample"></p>
-<h2>Key Advantages</h2>
-<p>The ProPrint X9000 offers several leading-edge features:</p>
-<h3>1. Ultra-High Precision &amp; Speed</h3>
-<p>Equipped with the latest industrial-grade printheads, the X9000 achieves up to <strong>1440 dpi</strong> physical resolution. Its innovative printing mode delivers astonishing speeds of <strong>60 m²/hour</strong> while maintaining quality.</p>
-<pre><code class="language-javascript">// Sample code: Print speed control
-function setPrintSpeed(mode) {
-  if (mode === 'draft') {
-    return 60; // m²/hour
-  } else if (mode === 'standard') {
-    return 30;
-  } else {
-    return 15; // high quality
-  }
-}
-</code></pre>
-<h3>2. Extensive Material Compatibility</h3>
-<p>From <strong>glass, acrylic, wood, metal</strong> to <strong>plastics</strong>, the X9000 handles them all with ease. Its advanced UV LED curing system ensures instant ink adhesion on various substrates.</p>
-<ul>
-<li>Glass</li>
-<li>Acrylic</li>
-<li>Wood</li>
-<li>Metal (pre-treatment required)</li>
-<li>PVC board</li>
-<li>Leather</li>
-<li>More...</li>
+        
+        <div id="article-content" class="article-content"><h1 class="max-w-4xl mx-auto">大标</h1>
+<h2 class="max-w-4xl mx-auto">中标题</h2>
+<h3 class="max-w-4xl mx-auto">小标题</h3>
+<p class="max-w-4xl mx-auto"><strong>DOCAN</strong> dakfasdjkfjas</p>
+<p class="max-w-4xl mx-auto">asdfasdf</p>
+<ul class="max-w-4xl mx-auto">
+<li>1234</li>
 </ul>
-<h3>3. Intelligent Control System</h3>
-<p>Features a 15.6" HD touchscreen and proprietary control software for intuitive operation. Supports remote monitoring, automatic layout, and smart color management.</p>
-<blockquote>
-<p>"The ProPrint X9000's intelligent system has significantly streamlined our workflow and reduced human errors." - Customer feedback</p>
-</blockquote>
-<h2>Technical Highlights</h2>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Printhead</td>
-<td>8-12 industrial-grade piezoelectric heads</td>
-</tr>
-<tr>
-<td>Ink Configuration</td>
-<td>CMYK + W + V + specialty colors (optional)</td>
-</tr>
-<tr>
-<td>Max Print Height</td>
-<td>150mm</td>
-</tr>
-<tr>
-<td>UV Curing System</td>
-<td>Dual LED lamps, adjustable power, long lifespan</td>
-</tr>
-<tr>
-<td>Platform</td>
-<td>Vacuum adsorption platform with zonal control</td>
-</tr>
-</tbody></table>
-<h2>Applications</h2>
-<p>The ProPrint X9000 serves diverse industries including:</p>
-<ol>
-<li><strong>Signage &amp; Advertising</strong>: High-quality outdoor/indoor signs</li>
-<li><strong>Home Decor</strong>: Custom murals, glass doors, furniture panels</li>
-<li><strong>Industrial Manufacturing</strong>: Control panels, equipment labeling</li>
-<li><strong>Custom Products</strong>: Phone cases, gifts, art reproductions</li>
-</ol>
-<p><a href="https://example.com/proprint-x9000">Learn more about ProPrint X9000</a> or <a href="#contact">Request a quote</a>.</p>
-<hr>
-<p><em>TechPrint - The Future of Printing Technology</em></p>
+<ul class="max-w-4xl mx-auto">
+<li><ul>
+<li>1234123</li>
+</ul>
+</li>
+</ul>
+<p><img src="/img/20250325183859254_t7ufca.png" alt="LOGO" style="width: 90%;" class="mx-auto"></p>
+<p class="max-w-4xl mx-auto"><a href="/index.html">首页</a></p>
 </div>
     </div>
 </main>
@@ -1177,8 +1171,8 @@ function setPrintSpeed(mode) {
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
             <div>
-                <a href="#" class="text-tech-light text-2xl font-bold mb-6 inline-block">
-                    TechPrint
+                <a href="/index.html" class="text-tech-light text-2xl font-bold mb-6 inline-block">
+                    DOCAN
                 </a>
                 <p class="text-tech-light/70 mb-6">
                     Specializing in industrial-grade UV printing solutions, providing high-quality, high-efficiency printing equipment and comprehensive technical support.
@@ -1186,69 +1180,86 @@ function setPrintSpeed(mode) {
             </div>
 
             <div>
-                <h4 class="text-lg font-bold mb-6">Product Series</h4>
+                <h4 class="text-lg font-bold mb-6">Printer Series</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">ProPrint X9000</a>
+                    <li><a href="/printers/printers.html#flatbed" class="text-tech-light/70 hover:text-white transition-colors">Flatbed Printers</a>
                     </li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">ProPrint X7000</a>
+                    <li><a href="/printers/printers.html#hybrid" class="text-tech-light/70 hover:text-white transition-colors">Hybrid Printers</a>
                     </li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">ProPrint X5000</a>
+                    <li><a href="/printers/printers.html#rolltoroll" class="text-tech-light/70 hover:text-white transition-colors">Roll-to-Roll Printers</a>
                     </li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">ProPrint R Series Roll-to-Roll Printer</a>
+                    <li><a href="/printers/printers.html#solvent" class="text-tech-light/70 hover:text-white transition-colors">Inkjet Printers</a>
                     </li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Accessories &amp; Consumables</a></li>
+                    <li><a href="/printers/printers.html#textile" class="text-tech-light/70 hover:text-white transition-colors">Textile Printers</a></li>
                 </ul>
             </div>
 
             <div>
-                <h4 class="text-lg font-bold mb-6">Solutions</h4>
+                <h4 class="text-lg font-bold mb-6">Inks</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Signage Industry</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Home Decor Industry</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Industrial Customization</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Packaging Printing</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Electronics Industry</a></li>
+                    <li><a href="/inks/inks.html#rigidink" class="text-tech-light/70 hover:text-white transition-colors">Rigid Inks</a></li>
+                    <li><a href="/inks/inks.html#mediumink" class="text-tech-light/70 hover:text-white transition-colors">Medium Inks</a></li>
+                    <li><a href="/inks/inks.html#specialapplications" class="text-tech-light/70 hover:text-white transition-colors">Special Applications</a></li>
+                    
+                    
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-lg font-bold mb-6">Support &amp; Services</h4>
                 <ul class="space-y-3">
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Technical Support</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">After-Sales Service</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Training Courses</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">FAQs</a></li>
-                    <li><a href="#" class="text-tech-light/70 hover:text-white transition-colors">Download Center</a></li>
+                    <li><a href="/support/contact.html" class="text-tech-light/70 hover:text-white transition-colors">Contact Us</a></li>
+                    <li><a href="/support/about.html" class="text-tech-light/70 hover:text-white transition-colors">About DOCAN</a></li>
+                    
+                    
+                    
                 </ul>
             </div>
         </div>
 
         <div class="pt-8 border-t border-tech-gray/30 flex flex-col md:flex-row justify-between items-center">
             <p class="text-tech-light/50 text-sm mb-4 md:mb-0">
-                © 2023 TechPrint Technologies Co., Ltd. All rights reserved.
+                © 2025 SHANGHAI DOCAN TECHNOLOGIES Co., Ltd. All rights reserved.
             </p>
             <div class="flex space-x-6">
-                <a href="#" class="text-tech-light/50 hover:text-white transition-colors text-sm">Privacy Policy</a>
-                <a href="#" class="text-tech-light/50 hover:text-white transition-colors text-sm">Terms of Use</a>
-                <a href="#" class="text-tech-light/50 hover:text-white transition-colors text-sm">Site Map</a>
+                <a href="/support/privacy-policy.html" class="text-tech-light/50 hover:text-white transition-colors text-sm">Privacy Policy</a>
+                
+                
             </div>
         </div>
     </div>
 </footer>
 
 <script>
-    // Mobile menu toggle
+    
     document.getElementById('mobile-menu-button').addEventListener('click', function () {
         const mobileMenu = document.getElementById('mobile-menu');
         mobileMenu.classList.toggle('hidden');
     });
 
-    // Fade-in animation for elements
+    
     function handleIntersection(entries, observer) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
+
+                
+                if (window.innerWidth < 768 && entry.target.style.transitionDelay) {
+                    entry.target.style.transitionDelay = '0s';
+                }
+
                 entry.target.classList.add('visible');
                 observer.unobserve(entry.target);
+
+                
+                if (entry.target.style.transitionDelay) {
+                    
+                    const delayMs = entry.target.style.transitionDelay.endsWith('ms') ?
+                        parseFloat(entry.target.style.transitionDelay) :
+                        parseFloat(entry.target.style.transitionDelay) * 1000;
+                    setTimeout(() => {
+                        entry.target.style.transitionDelay = '0s';
+                    }, delayMs + 1000);
+                }
             }
         });
     }
@@ -1259,46 +1270,18 @@ function setPrintSpeed(mode) {
         threshold: 0.1
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const fadeElements = document.querySelectorAll('.fade-in');
-        fadeElements.forEach(element => {
-            observer.observe(element);
-        });
+    const fadeElements = document.querySelectorAll('.fade-in');
 
-        // Initialize GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
+    const fadeElementsOpacity = document.querySelectorAll('.fade-in-opacity');
+    
+    const allFadeElements = [...fadeElementsOpacity, ...fadeElements];
 
-        // Scroll Feature Animations
-        const scrollFeatures = document.querySelectorAll('.scroll-feature');
-
-        scrollFeatures.forEach((feature) => {
-            ScrollTrigger.create({
-                trigger: feature,
-                start: "top 80%",
-                end: "bottom 20%",
-                toggleClass: { targets: feature, className: "visible" },
-                once: true
-            });
-        });
-
-        // Parallax effect for background image
-        window.addEventListener('scroll', function () {
-            const parallaxBg = document.getElementById('parallax-bg');
-            if (parallaxBg) {
-                const scrollPosition = window.pageYOffset;
-                const parallaxSection = document.querySelector('.parallax-section');
-                const sectionTop = parallaxSection.offsetTop;
-                const sectionHeight = parallaxSection.offsetHeight;
-
-                if (scrollPosition > sectionTop - window.innerHeight &&
-                    scrollPosition < sectionTop + sectionHeight) {
-                    const yPos = (scrollPosition - sectionTop) * 0.3;
-                    parallaxBg.style.transform = `translateY(${yPos}px)`;
-                }
-            }
-        });
+    allFadeElements.forEach(element => {
+        observer.observe(element);
     });
 </script>
+<script src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;4f5dc0fc68bc4788860fbef46f6ecfb6&quot;}" defer=""></script>
 
 
-</body></html><!-- Footer -->
+
+</body></html>
