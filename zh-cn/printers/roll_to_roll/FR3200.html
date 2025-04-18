@@ -1449,21 +1449,30 @@ Ricoh Gen6(5PL):4Pass(4 Row):72~80sqm/h<br>6Pass(4 Row):56~60sqm/h<br>8Pass(4 Ro
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
         const formStatusMessage = document.getElementById('formStatusMessage');
 
         if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
+            contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
-                
+
                 
                 const submitButton = contactForm.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.textContent;
                 submitButton.textContent = '提交中...';
                 submitButton.disabled = true;
-                
+                let message = contactForm.elements['message'].value;
+                try {
+                    
+                    message = message + '\n' + 'URL: ' + window.location.href;
+                    
+                    message = message + '\n' + 'Language: ' + navigator.language;
+                } catch {
+
+                }
+
                 
                 const formData = {
                     name: contactForm.elements['name'].value,
@@ -1471,9 +1480,9 @@ Ricoh Gen6(5PL):4Pass(4 Row):72~80sqm/h<br>6Pass(4 Row):56~60sqm/h<br>8Pass(4 Ro
                     email: contactForm.elements['email'].value,
                     phone: contactForm.elements['phone'].value,
                     interest: contactForm.elements['interest'].value,
-                    message: contactForm.elements['message'].value
+                    message: message
                 };
-                
+
                 try {
                     
                     const response = await fetch('/api/submit', {
@@ -1483,12 +1492,12 @@ Ricoh Gen6(5PL):4Pass(4 Row):72~80sqm/h<br>6Pass(4 Row):56~60sqm/h<br>8Pass(4 Ro
                         },
                         body: JSON.stringify(formData)
                     });
-                    
+
                     const result = await response.json();
-                    
+
                     
                     formStatus.classList.remove('hidden');
-                    
+
                     if (result.success) {
                         formStatus.classList.add('bg-green-600');
                         formStatus.classList.remove('bg-red-600');

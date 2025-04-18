@@ -1200,14 +1200,18 @@
                         
                     </ul>
                 </div>
-                
+                <div class="order-1 md:order-2">
+                    <img src="/img/20250417082657356_bar3ic.jpg" alt="适配各品牌工业级打印头" class="feature-image w-full rounded-2xl clean-shadow">
+                </div>
             </div>
         </div>
 
         
         <div class="fade-in-opacity from-right mb-32">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                
+                <div>
+                    <img src="/img/20250417082657404_iw79og.jpg" alt="3.2米大台面 胜任多介质打印" class="feature-image w-full rounded-2xl clean-shadow">
+                </div>
                 <div>
                     <h3 class="text-2xl font-bold mb-4 text-white feature-title">3.2米大台面 胜任多介质打印</h3>
                     
@@ -1252,7 +1256,9 @@
                         </li>
                     </ul>
                 </div>
-                
+                <div class="order-1 md:order-2">
+                    <img src="/img/20250418083811734_im5yq8.jpg" alt="UV LED固化系统" class="feature-image w-full rounded-2xl clean-shadow">
+                </div>
             </div>
         </div>
 
@@ -1692,21 +1698,30 @@
 </section>
 
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         const contactForm = document.getElementById('contactForm');
         const formStatus = document.getElementById('formStatus');
         const formStatusMessage = document.getElementById('formStatusMessage');
 
         if (contactForm) {
-            contactForm.addEventListener('submit', async function(e) {
+            contactForm.addEventListener('submit', async function (e) {
                 e.preventDefault();
-                
+
                 
                 const submitButton = contactForm.querySelector('button[type="submit"]');
                 const originalButtonText = submitButton.textContent;
                 submitButton.textContent = '提交中...';
                 submitButton.disabled = true;
-                
+                let message = contactForm.elements['message'].value;
+                try {
+                    
+                    message = message + '\n' + 'URL: ' + window.location.href;
+                    
+                    message = message + '\n' + 'Language: ' + navigator.language;
+                } catch {
+
+                }
+
                 
                 const formData = {
                     name: contactForm.elements['name'].value,
@@ -1714,9 +1729,9 @@
                     email: contactForm.elements['email'].value,
                     phone: contactForm.elements['phone'].value,
                     interest: contactForm.elements['interest'].value,
-                    message: contactForm.elements['message'].value
+                    message: message
                 };
-                
+
                 try {
                     
                     const response = await fetch('/api/submit', {
@@ -1726,12 +1741,12 @@
                         },
                         body: JSON.stringify(formData)
                     });
-                    
+
                     const result = await response.json();
-                    
+
                     
                     formStatus.classList.remove('hidden');
-                    
+
                     if (result.success) {
                         formStatus.classList.add('bg-green-600');
                         formStatus.classList.remove('bg-red-600');
