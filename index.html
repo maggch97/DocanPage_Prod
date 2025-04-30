@@ -1483,7 +1483,61 @@
             </div>
         </div>
     </div>
-</section><section id="contact" class="py-20 bg-tech-black">
+</section><style>
+    .news-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .news-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .news-card img {
+        transition: all 0.5s ease;
+    }
+
+    .news-card:hover img {
+        transform: scale(1.05);
+    }
+</style>
+
+<section class="py-20 bg-tech-black homepage-news">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">News &amp; Events</h2>
+            <p class="text-lg text-tech-light/80 max-w-3xl mx-auto fade-in">
+                Stay updated with DOCAN's latest news and industry insights
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a class="block">
+                <div class="news-card apple-card overflow-hidden rounded-2xl fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/img/20250430030855638_0h4mb2.jpg" alt="News image" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-sm text-tech-light/60 mb-2">April 30, 2025</div>
+                        <h3 class="text-xl font-bold mb-3">Saudi Sign Expo</h3>
+                        <p class="text-tech-light/70 mb-4">
+                            DOCAN cordially invites you to visit us at The Saudi Sign Expo.<br>Venue: Riyadh International Convention &amp; Exhibition Center<br>Dates: May 20-22, 2025
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+
+            
+
+            
+        </div>
+
+        
+    </div>
+</section>
+
+<section id="contact" class="py-20 bg-tech-black">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

@@ -1483,7 +1483,61 @@
             </div>
         </div>
     </div>
-</section><section id="contact" class="py-20 bg-tech-black">
+</section><style>
+    .news-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .news-card:hover {
+        transform: translateY(-10px);
+    }
+
+    .news-card img {
+        transition: all 0.5s ease;
+    }
+
+    .news-card:hover img {
+        transform: scale(1.05);
+    }
+</style>
+
+<section class="py-20 bg-tech-black homepage-news">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 fade-in">뉴스 &amp; 이벤트</h2>
+            <p class="text-lg text-tech-light/80 max-w-3xl mx-auto fade-in">
+                DOCAN의 최신 소식과 업계 뉴스를 확인하세요
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <a class="block">
+                <div class="news-card apple-card overflow-hidden rounded-2xl fade-in">
+                    <div class="h-48 overflow-hidden">
+                        <img src="/img/20250430030855638_0h4mb2.jpg" alt="뉴스 이미지" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <div class="text-sm text-tech-light/60 mb-2">2025년 4월 30일</div>
+                        <h3 class="text-xl font-bold mb-3">사우디 사인 엑스포</h3>
+                        <p class="text-tech-light/70 mb-4">
+                            동촌(DOCAN)은 사우디아라비아 사인 엑스포에 여러분을 초대합니다.<br>전시장 주소: 리야드 국제 컨벤션 센터<br>전시 기간: 2025년 5월 20일부터 22일까지
+                        </p>
+                        
+                    </div>
+                </div>
+            </a>
+
+            
+
+            
+        </div>
+
+        
+    </div>
+</section>
+
+<section id="contact" class="py-20 bg-tech-black">
     <div class="container mx-auto px-4">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
